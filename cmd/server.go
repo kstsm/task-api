@@ -10,7 +10,7 @@ import (
 	"os/signal"
 	"syscall"
 	"task-manager/config"
-	"task-manager/internal/handler"
+	"task-manager/internal/api/rest/v1"
 	"task-manager/internal/service"
 	"task-manager/internal/storage"
 	"time"
@@ -24,11 +24,11 @@ func Run() {
 
 	storageInstance := storage.NewStorage()
 	svc := service.NewService(storageInstance)
-	router := handler.NewHandler(svc)
+	v1Handler := v1.NewHandler(svc)
 
 	srv := &http.Server{
 		Addr:    fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port),
-		Handler: router.NewRouter(),
+		Handler: v1Handler,
 	}
 
 	errChan := make(chan error, 1)

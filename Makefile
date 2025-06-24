@@ -9,6 +9,4 @@ build:
 start: build
 	./build/main
 
-lint: 
-	golangci-lint run;
 
