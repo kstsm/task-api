@@ -24,7 +24,7 @@ make start
 
 ### Базовый URL
 ```
-http://localhost:8080/api/v1/tasks
+http://localhost:8080/api/v1/task
 ```
 
 ### 1. Создание задачи
